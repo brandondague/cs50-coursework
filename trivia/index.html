@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+        <link href="styles.css" rel="stylesheet">
+        <title>Trivia!</title>
+    </head>
+    <body>
+        <div class="header">
+            <h1>Trivia!</h1>
+        </div>
+
+        <div class="container">
+            <div class="section">
+                <h2>Part 1: Multiple Choice </h2>
+                <hr>
+                <h3>Which country invented ice cream?</h3>
+
+                <button class="incorrect">United States</button>
+                <button class="incorrect">Germany</button>
+                <button class="incorrect">India</button>
+                <button class="incorrect">Portugal</button>
+                <button class="correct">China</button>
+
+                <p id="message1"></p>
+            </div>
+
+            <div class="section">
+                <h2>Part 2: Free Response</h2>
+                <hr>
+                <!-- TODO: Add free response question here -->
+                <h3>Which country consumes the most chocolate per capita?</h3>
+
+                <input id="answer" placeholder="Answer" type="text">
+                <input id="check" value="Check Answer" type="submit">
+
+                <p id="message2"></p>
+            </div>
+        </div>
+        <script>
+            document.querySelector('.correct').addEventListener('click', function() {
+                this.style.backgroundColor = 'green';
+                document.querySelector('#message1').innerHTML = 'Correct'
+            });
+
+            document.querySelectorAll('.incorrect').forEach(function(e) {
+                e.addEventListener('click', function() {
+                    this.style.backgroundColor = 'red';
+                    document.querySelector('#message1').innerHTML = 'Incorrect'
+                });
+            });
+
+            document.querySelector('#check').addEventListener('click', function() {
+                let answer = document.querySelector('#answer').value;
+                if (answer.toLowerCase() === 'switzerland') {
+                    document.querySelector('input[type="text"]').style.backgroundColor = 'green';
+                    document.querySelector('#message2').innerHTML = 'Correct';
+                }
+                else {
+                    document.querySelector('input[type="text"]').style.backgroundColor = 'red';
+                    document.querySelector('#message2').innerHTML = 'Incorrect';
+                }
+            });
+        </script>
+    </body>
+</html>
